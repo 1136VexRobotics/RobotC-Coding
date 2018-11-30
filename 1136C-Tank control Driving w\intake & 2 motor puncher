@@ -1,6 +1,9 @@
 #pragma config(Motor,  port1,           fl,            tmotorVex393_HBridge, openLoop)
 #pragma config(Motor,  port2,           ml,            tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           bl,            tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port5,           in,            tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port6,           p1,            tmotorNone, openLoop)
+#pragma config(Motor,  port7,           p2,            tmotorNone, openLoop)
 #pragma config(Motor,  port8,           fr,            tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port9,           mr,            tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port10,          br,            tmotorVex393_HBridge, openLoop)
@@ -9,7 +12,7 @@
 task main()
 {
 	while(1==1)
-{	
+{
 motor[fl]=vexRT[Ch3];
 motor[ml]=vexRT[Ch3];
 motor[bl]=vexRT[Ch3];
@@ -17,5 +20,29 @@ motor[fr]=vexRT[Ch2];
 motor[mr]=vexRT[Ch2];
 motor[br]=vexRT[Ch2];
 
+if(VexRT[Btn6U])
+{
+	motor[in]=127;
+}
+	else if(vexRT[Btn6D])
+{
+	motor[in]=-127;
+}
+	else
+	{
+		motor[in]=0;
+}
+
+if(vexRT[Btn8D]==1)
+		{
+			motor[p1]=127;
+			motor[p2]=127;
+		}
+		else
+		{
+			motor[p1]=0;
+			motor[p2]=0;
+		}
+		
 }
 }
